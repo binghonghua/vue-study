@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>小陈记事本</title>
+    <link rel="stylesheet" type="text/css" href=./css/xiaochen.css />
+
+</head>
+
+<body>
+<!--主体区域-->
+<h1 class="biaoti">小陈记事本</h1>
+<section id="app">
+    <!--输入框-->
+    <header class="header">
+        <input v-model="inputValue" @keyup.enter="add" autofocus="autofocus" autocomplete="off" placeholder="输入任务"
+               class="new-todo">
+    </header>
+    <!--列表区域-->
+    <section class="main">
+        <ul class="todo-list">
+            <li class="todo" v-for="(item,index) in list">
+                <div class="view">
+                    <span class="index">{{index+1}}.</span>
+                    <label>{{item}}</label>
+                    <button class="destroy" @click="remvoe (index)">删除</button>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <!--统计清空-->
+    <footer class="footer">
+        <div>
+            <span class="reft" v-if="list.length!=0"><strong>{{list.length}}</strong>&nbsp items </span>
+            <span class="right" @click="clear" v-show="list.length!=0"><button>Clear</button></span>
+        </div>
+    </footer>
+</section>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            list: ["erer", "ccc", "chang"],
+            inputValue: "哈哈小恶习"
+        },
+        methods: {
+            add: function () {
+                this.list.push(this.inputValue)
+            },
+            remvoe: function (index) {
+                this.list.splice(index, 1)
+            },
+            clear: function () {
+                this.list = [];
+            }
+
+        },
+
+    })
+</script>
+
+</html>

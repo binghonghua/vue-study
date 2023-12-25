@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+
+<div id="app">
+    <button @mouseenter="count--">-</button>
+    <span>{{count}}</span>
+    <button @mouseenter="count++">+</button>
+</div>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            count:5
+        }
+    })
+</script>
+</body>
+</html>
