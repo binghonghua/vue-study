@@ -1,28 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>计算</title>
   <style>
     table {
       border: 1px solid #000;
       text-align: center;
       width: 240px;
     }
-    th,td {
+
+    th,
+    td {
       border: 1px solid #000;
     }
+
     h3 {
       position: relative;
     }
+    span {
+      position: absolute;
+      left: 145px;
+      top: -4px;
+      width: 16px;
+      height: 16px;
+      color: white;
+      font-size: 12px;
+      text-align: center;
+      border-radius: 50%;
+      background-color: #e63f32;
+    }
   </style>
 </head>
+
 <body>
 
   <div id="app">
-    <h3>小黑的礼物清单</h3>
+    <h3>小陈的礼物清单🤠<span>{{totalNum}}</span></h3>
     <table>
       <tr>
         <th>名字</th>
@@ -35,7 +52,7 @@
     </table>
 
     <!-- 目标：统计求和，求得礼物总数 -->
-    <p>礼物总数：? 个</p>
+    <p>礼物总数：{{totalNum}} 个</p>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script>
@@ -48,8 +65,19 @@
           { id: 2, name: '玩具', num: 2 },
           { id: 3, name: '铅笔', num: 5 },
         ]
+      },
+      computed: {
+        //计算属性是有缓存的  性能更高
+        totalNum(){
+          var sum = 0;
+          this.list.forEach(element => {
+            sum += element.num
+          });
+          return sum
+        }
       }
     })
   </script>
 </body>
+
 </html>

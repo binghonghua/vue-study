@@ -25,8 +25,8 @@
 <body>
 
   <div id="app">
-    <div class="box">黑马程序员</div>
-    <div class="box">黑马程序员</div>
+    <div class="box" :class="{pink:false,big:true}">大帅哥1</div>
+    <div class="box" :class="['pink','big']">大帅哥2</div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script>

@@ -9,7 +9,7 @@
 <body>
   <div id="app">
     <h3>@keyup.enter  →  监听键盘回车事件</h3>
-    <input v-model="username" type="text">
+    <input @keyup.enter="fn" v-model="username" type="text">
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script>
@@ -19,7 +19,9 @@
         username: ''
       },
       methods: {
-        
+        fn(){
+          console.log("回车时触发",this.username)
+        }
       }
     })
   </script>
